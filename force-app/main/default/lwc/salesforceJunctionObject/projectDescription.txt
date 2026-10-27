@@ -1,0 +1,62 @@
+Project: Student Course Enrollment System
+=========================================
+Imagine a college where students can enroll in different courses.
+    - One student can enroll in multiple courses.
+    - One course can have multiple students.
+    - We need to store which student enrolled in which course.
+
+This is exactly the kind of problem a Junction Object solves.
+
+1. Understand the project design
+================================
+We will create three custom objects.
+    - Student__c
+        - Name
+        - Email__c
+    - Enrollment__c(Junction Object)
+        - Student__c — Master-Detail
+        - Course__c — Master-Detail
+        - Enrollment_Date__c
+    Course__c
+        - Name
+        - Fee__c
+
+Why is Enrollment__c a Junction Object?
+---------------------------------------
+Suppose we have these records:
+
+Student             Course
+-------            --------
+Rahul               Salesforce Admin
+Rahul               Apex Development
+Priya               Salesforce Admin
+Priya               LWC Development
+
+Rahul is enrolled in two courses, and Salesforce Admin has two students. 
+Neither a single Student lookup field nor a single Course lookup field can represent this many-to-many relationship by itself. Instead, every enrollment is a separate record in Enrollment__c.
+
+The key concept: the junction object has two Master-Detail relationships, one to Student__c and one to Course__c. Each enrollment connects one student to one course.
+
+2. What we will build
+=====================
+The project will have one simple Lightning Web Component where you can:
+    View students and available courses.
+    Select a student and a course.
+    Click Enroll Student.
+    Save an enrollment record through Apex.
+    View existing enrollments.
+    Understand how LWC calls Apex and how Apex inserts a junction record.
+
+3. Create the Salesforce objects and fields
+===========================================
+In Salesforce Setup, go to Object Manager → Create → Custom Object.
+Create these objects:
+Object label            API name            Purpose
+Student                 Student__c          Stores students
+Course                  Course__c           Stores courses
+Enrollment              Enrollment__c       Connects students and courses
+For all three objects, enable Allow Reports if you want to explore reports later. You can keep the other settings at their defaults.
+
+    
+
+    

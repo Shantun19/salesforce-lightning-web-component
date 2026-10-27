@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Student Course Enrollment" icon-name="standard:education">
+        <div class="slds-p-around_medium">
+            <lightning-combobox name="student" label="Select Student" value={selectedStudentId} options={studentOptions}
+                onchange={handleStudentChange} placeholder="Choose a student">
+            </lightning-combobox>
+            <div class="slds-m-top_medium">
+                <lightning-combobox name="course" label="Select Course" value={selectedCourseId} options={courseOptions}
+                    onchange={handleCourseChange} placeholder="Choose a course">
+                </lightning-combobox>
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning-button label="Enroll Student" variant="brand" onclick={handleEnroll}
+                    disabled={isEnrollDisabled}>
+                </lightning-button>
+            </div>
+            <template lwc:if={message}>
+                <div class="slds-m-top_medium">
+                    <p>{message}</p>
+                </div>
+            </template>
+            <div class="slds-m-top_large">
+                <h2 class="slds-text-heading_medium">Existing Enrollments</h2>
+                <template lwc:if={hasEnrollments}>
+                    <template for:each={enrollments} for:item="item">
+                        <div key={item.Id} class="slds-box slds-m-top_small">
+                            <p>
+                                <strong>Student:</strong>{item.Student__r.Name}
+                            </p>
+                            <p>
+                                <strong>Course:</strong>{item.Course__r.Name}
+                            </p>
+                            <p>
+                                <strong>Enrollment Date:</strong>{item.Enrollment_Date__c}
+                            </p>
+                        </div>
+                    </template>
+                </template>
+                <template lwc:else>
+                    <p class="slds-m-top_small">
+                        No enrollments found.
+                    </p>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>
