@@ -1,0 +1,69 @@
+<template>
+    <lightning-card title="Student Result Management System">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" label="Enter your roll no" onchange={handleRollNoChange}></lightning-input>
+            <p lwc:if={invalidRollNumber} style="color: red;">Invalid Roll Number !</p>
+            <lightning-button variant="brand" label="Submit" title="Primary action" onclick={handleSubmit} class="slds-m-left_x-small"></lightning-button>
+        </div>
+        <hr>
+        <!-- Show results only when a student is found -->
+        <template lwc:if={hasStudent}>
+            <!-- PASS: green tables -->
+            <template lwc:if={isPass}>
+                <div class="slds-p-around_medium">
+                    <h2 class="slds-text-heading_small">Personal Details</h2>
+                    <table class="result-table pass-table">
+                        <tr><th>Name</th><td>{student.studentName}</td></tr>
+                        <tr><th>Age</th><td>{student.age}</td></tr>
+                        <tr><th>Class</th><td>{student.class}</td></tr>
+                        <tr><th>Roll No</th><td>{student.rollNo}</td></tr>
+                    </table>
+                </div>
+                <div class="slds-p-around_medium">
+                    <h2 class="slds-text-heading_small">Marks</h2>
+                    <table class="result-table pass-table">
+                        <tr><th>Physics</th><td>{student.marks.physics}</td></tr>
+                        <tr><th>Chemistry</th><td>{student.marks.chemistry}</td></tr>
+                        <tr><th>Maths</th><td>{student.marks.maths}</td></tr>
+                    </table>
+                </div>
+                <div class="slds-p-around_medium">
+                    <h2 class="slds-text-heading_small">Final Result</h2>
+                    <table class="result-table pass-table">
+                        <tr><th>Total Marks</th><td>{totalMarks} / 300</td></tr>
+                        <tr><th>Percentage</th><td>{percentage}%</td></tr>
+                        <tr><th>Result</th><td><b>PASS</b></td></tr>
+                    </table>
+                </div>
+            </template>
+            <!-- FAIL: red tables -->
+            <template lwc:else>
+                <div class="slds-p-around_medium">
+                    <h2 class="slds-text-heading_small">Personal Details</h2>
+                    <table class="result-table fail-table">
+                        <tr><th>Name</th><td>{student.studentName}</td></tr>
+                        <tr><th>Age</th><td>{student.age}</td></tr>
+                        <tr><th>Class</th><td>{student.class}</td></tr>
+                        <tr><th>Roll No</th><td>{student.rollNo}</td></tr>
+                    </table>
+                </div>
+                <div class="slds-p-around_medium">
+                    <h2 class="slds-text-heading_small">Marks</h2>
+                    <table class="result-table fail-table">
+                        <tr><th>Physics</th><td>{student.marks.physics}</td></tr>
+                        <tr><th>Chemistry</th><td>{student.marks.chemistry}</td></tr>
+                        <tr><th>Maths</th><td>{student.marks.maths}</td></tr>
+                    </table>
+                </div>
+                <div class="slds-p-around_medium">
+                    <h2 class="slds-text-heading_small">Final Result</h2>
+                    <table class="result-table fail-table">
+                        <tr><th>Total Marks</th><td>{totalMarks} / 300</td></tr>
+                        <tr><th>Percentage</th><td>{percentage}%</td></tr>
+                        <tr><th>Result</th><td><b>FAIL</b></td></tr>
+                    </table>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>
