@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="data binding">
+        <!-- data binding -->
+        <!-- to diplay the js content inside the html we need to use the {} -->
+        <p>Name - {name}</p>
+        <p>Full Name - {fullName}</p>
+        <p>object Properties : { details.name } and place is : { details.place }</p>
+        <hr>
+    </lightning-card>
+    <lightning-card title="2 way data binding">
+        <input type="text" onchange={handleChange}>
+        <p>current the title is : {title}</p>
+    </lightning-card>
+</template>
