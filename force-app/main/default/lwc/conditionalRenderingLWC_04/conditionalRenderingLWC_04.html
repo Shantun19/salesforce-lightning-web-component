@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Conditonal Rendering LWC">
+        <h1>LWC:IF</h1>
+        <template if:true={isVisible}>This is only display when condition gets true and gets hide when condition gets false.</template>
+        <button onclick={handleDisplay}>Display</button>
+        <button onclick={handleHide}>Hide</button>
+    </lightning-card>
+</template>
