@@ -1,0 +1,25 @@
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-table th,
+.result-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ffffff;
+}
+
+.result-table th {
+    width: 40%;
+}
+
+.pass-table {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.fail-table {
+    background-color: #f8d7da;
+    color: #721c24;
+}
