@@ -17,7 +17,6 @@ export default class Introduction01 extends LightningElement {
      * aura component and lightning web component can coexist and interoperate and they share the same high level service.
      * aura componenet and lightning web component can coexits on the same page.
      * aura component can able to include the lightning web component but lightning web component(lwc) not able to include the aura component inside.
-     * 
      */
 
     /**
