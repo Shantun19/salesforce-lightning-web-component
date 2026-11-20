@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Template Looping in LWC">
+        <h1>Student Details</h1>
+        <!-- for:each={students} tells LWC to loop through the students array. -->
+        <!-- for:item="student" creates a variable called student for the current record. -->
+        <!-- student.name accesses the current student's name and student.age accesses the current student's age. -->
+        <!-- key={student.id} uniquely identifies each rendered item. -->
+        <!-- Important: In LWC, whenever you use for:each, you must provide a unique key on the first HTML element inside the loop. -->
+        <template for:each={students} for:item="student">
+            <div key={student.id}>
+                <p>Name: {student.name}</p>
+                <p>Age: {student.age}</p>
+            </div>
+        </template>
+        <hr>
+        <h1>Using Itertor directive</h1>
+        <h1>Student Details</h1>
+        <template iterator:student={students}>
+            <div key={student.value.id}>
+                <p>Name: {student.value.name}</p>
+                <p>Age: {student.value.age}</p>
+                <template lwc:if={student.first}><p>This is the first student</p>
+                </template>
+                <template lwc:if={student.last}><p>This is the last student</p>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>
