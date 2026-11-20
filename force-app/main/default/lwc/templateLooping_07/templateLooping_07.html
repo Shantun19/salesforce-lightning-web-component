@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="The template looping part 2">
+        <template for:each={carList} for:item="car">
+            <div key={car}>
+                <p>{car}</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>
